@@ -221,6 +221,8 @@ class RobotController:
 			movement_vec = self.goal_pos[:2] - self.get_position()[:2]
 			if np.linalg.norm(neg_ft) > self.force_safety_limit and np.dot(movement_vec,neg_ft) > 0:
 				self.force_limited = True
+				# This condition is triggered when an external force prevents the robot from reaching its setpoint.
+				# Behavior to handle contact cases can be added here.
 			else:
 				self.force_limited = False
 
